@@ -8,24 +8,12 @@ import time
 from streamlit_folium import folium_static
 from sklearn.preprocessing import MinMaxScaler
 
-import time 
+
 
 with st.spinner('인구데이터 불러오는 중...'):
   time.sleep(5)
   st.success('완료') 
-
-# st.markdown("""
-# <style>
-# .reportview-container .main {
-#     max-width: 80%;
-# }
-# </style>
-# """, unsafe_allow_html=True)
-
-# st.set_page_config(layout="wide")
-
-
-
+  
 st.sidebar.title('년도 및 지역 선택')
 select_year = st.sidebar.selectbox('년도 선택',['2018','2019','2020','2021','2022'])
 select_area = st.sidebar.selectbox('지역선택'
@@ -46,19 +34,11 @@ select_area_location_latitude_value = select_area_location_latitude[0]
 select_area_location_hardness = select_area_location[select_area_location['region'] == select_area]['경도'].values
 select_area_location_hardness_value = select_area_location_hardness[0]
 
-
-# if select_year=='2022': #파일 선택하는것
-#     selected_year=
-
 #___________________________________________________________________________________________________
 
 
 geo_json = 'https://raw.githubusercontent.com/vuski/admdongkor/master/ver20221001/HangJeongDong_ver20221001.geojson'
 
-#uploaded = files.upload()
-
-# 파일 업로드 후 
-# data_h1 = pd.read_csv(f'C:\\Users\\82105\\Desktop\\2023_05_26_capstone_1\\{select_year}_{select_area_text}_완료.csv')
 data_h1 = pd.read_csv(f'C:\\Users\\82105\\Desktop\\2023_05_26_capstone_1\\정제 완료 데이터\\{select_year}완료지역.csv')
 
 data_h2 = pd.read_csv(f'C:\\Users\\82105\\Desktop\\2023_05_26_capstone_1\\정제 완료 데이터\\{select_year}완료지역.csv')
@@ -67,30 +47,9 @@ select_area_chosen = data_h1[data_h1['지역'] == select_area]
 
 #___________________________________________________________________________________________________
 
-# df = px.data.gapminder()
-# fig = px.scatter(
-#     df.query("year==2007"),
-#     x="gdpPercap",
-#     y="lifeExp",
-#     size="pop",
-#     color="continent",
-#     hover_name="country",
-#     log_x=True,
-#     size_max=60,
-# )
-# df
-#____________________________________________________________________
-
 dfs = select_area_chosen.sort_values('총인구수')
 dfs = dfs.iloc[:-20]
 dfs = dfs.reset_index(drop=True)
-
-# DataFrame 'dfs'의 행 순서를 랜덤하게 섞기
-# dfran = data_h1.sample(frac=1).reset_index(drop=True)
-
-# '구간별_데이터_개수'
-# '조출생률'
-# dfran.index
 
 fig = px.scatter(
     dfs,
@@ -194,19 +153,7 @@ with col2:
         line_opacity=0.1  # 경계선 굵기
         
     ).add_to(m)
-        
-        # # GeoJson layer for the tooltip 마우스 갖다대면 지역명 표시
-        # tooltip_layer = folium.GeoJson(
-        #     geo_json,
-        #     name="Tooltip Layer",
-        #     style_function=lambda x: {'color':'transparent','fillColor':'transparent','weight':0},
-        #     tooltip=folium.features.GeoJsonTooltip(fields=['adm_nm'], aliases=[''])
-        # )
-        # tooltip_layer.add_to(choropleth.geojson)
-        
-        # data_h1
-        # Use the Streamlit theme.
-        # This is the default. So you can also omit the theme argument.
+
 
         folium_static(m)        
         #___________________________________________________________________________________________________
@@ -236,19 +183,12 @@ with col2:
 
             # st.plotly_chart(fig3)            
             #___________________________________________________________________________________________________
-            
 
-            # Use the native Plotly theme.
-            # st.plotly_chart(fig, theme=None, use_container_width=True)
             st.plotly_chart(fig3)
 
             st.sidebar.title(' ')
 
 
-
-            # 평균과 중앙값 계산
-            # mean_values = data_h1["조출생률"].mean()
-            # median_values = data_h1["조출생률"].median()
             all_mean = data_h1["조출생률"].mean()
             all_median = data_h1["조출생률"].median()
 
