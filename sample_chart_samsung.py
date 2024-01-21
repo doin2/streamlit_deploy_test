@@ -3,6 +3,9 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
+st.set_page_config(layout="wide")
+
+
 stock_data = yf.download('005930.KS', start='2020-01-01', end='2023-12-31')
 
 buy_dates = pd.to_datetime(['2020/01/29', '2020/01/30', '2020/02/04', '2020/02/05', '2020/02/07', '2020/02/14',
