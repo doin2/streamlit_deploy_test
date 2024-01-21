@@ -60,7 +60,7 @@ fig2.add_trace(go.Scatter(x=[date for date in sell_dates if date in stock_data.i
                          mode='markers', name='Sell', marker=dict(symbol='triangle-down', size=10, color='red')))
 
 # 차트 레이아웃 설정
-fig2.update_layout(title='Stock Price with Buy & Sell Points', yaxis_title='Price', width=1800, height=800)
+# fig2.update_layout(title='Stock Price with Buy & Sell Points', yaxis_title='Price', width=1800, height=800)
 
 # 스트림릿에 차트 그리기
 st.plotly_chart(fig2)
