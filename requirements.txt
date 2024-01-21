@@ -1,3 +1,6 @@
-yfinance
 streamlit
+streamlit_folium
 plotly
+folium
+time
+sklearn
