@@ -31,8 +31,8 @@ data = [trace, buy_scatter, sell_scatter, s2]
 
 layout = go.Layout(title='Stock Price with Buy & Sell Points', 
     yaxis=dict(title='Price'),
-    width=1800,  # 차트의 너비 설정
-    height=800  # 차트의 높이 설정
+    # width=1800,  # 차트의 너비 설정
+    # height=800  # 차트의 높이 설정
 )
 fig = go.Figure(data=data, layout=layout)
 
