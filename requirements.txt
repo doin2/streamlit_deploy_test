@@ -3,3 +3,4 @@ streamlit_folium
 plotly
 folium
 scikit-learn
+yfinance 
