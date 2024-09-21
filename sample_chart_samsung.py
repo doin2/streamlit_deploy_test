@@ -20,7 +20,7 @@ trace = go.Scatter(x=stock_data.index, y=stock_data['Close'], mode='lines', name
 
 buy_scatter = go.Scatter(x=[date for date in buy_dates if date in stock_data.index],
                          y=[stock_data.loc[date, 'Close'] for date in buy_dates if date in stock_data.index],
-                         mode='markers', name='Buy', marker=dict(symbol='triangle-up', size=10, color='green'))
+                         mode='markers', name='Buy', marker=dict(symbol='triangle-down', size=10, color='green'))
 
 sell_scatter = go.Scatter(x=[date for date in sell_dates if date in stock_data.index],
                           y=[stock_data.loc[date, 'Close'] for date in sell_dates if date in stock_data.index],
